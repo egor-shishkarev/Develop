@@ -20,16 +20,16 @@ int verificationIntScanf() {
 }
 
 void insertionSort(int* arrayOfNumbers, int firstIndex, int lastIndex) {
-	int i = 1;
+	int currentElement = 1;
 	int lengthOfArray = lastIndex - firstIndex + 1;
-	while (i < lengthOfArray) {
-		while (arrayOfNumbers[i] < arrayOfNumbers[i - 1] && i >= 1) {
-			const int buffer = arrayOfNumbers[i - 1];
-			arrayOfNumbers[i - 1] = arrayOfNumbers[i];
-			arrayOfNumbers[i] = buffer;
-			--i;
+	while (currentElement < lengthOfArray) {
+		while (arrayOfNumbers[currentElement] < arrayOfNumbers[currentElement - 1] && currentElement >= 1) {
+			const int buffer = arrayOfNumbers[currentElement - 1];
+			arrayOfNumbers[currentElement - 1] = arrayOfNumbers[currentElement];
+			arrayOfNumbers[currentElement] = buffer;
+			--currentElement;
 		}
-		++i;
+		++currentElement;
 	}
 }
 
@@ -55,7 +55,8 @@ int smartQuickSort(int* arrayOfNumbers, int firstIndex, int lastIndex) {
 		} while (left <= right);
 		smartQuickSort(arrayOfNumbers, firstIndex, right);
 		smartQuickSort(arrayOfNumbers, left, lastIndex);
-	} else {
+	}
+	else {
 		insertionSort(arrayOfNumbers, firstIndex, lastIndex);
 	}
 }
@@ -75,7 +76,7 @@ int main() {
 		printf("Произошла ошибка, массив не был создан.");
 		return -1;
 	}
-	switch (flagOfMode){
+	switch (flagOfMode) {
 	case 0:
 		srand(clock());
 		for (int i = 0; i < numberOfElements; ++i) {
